@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProjectController;
 
 
 /*
@@ -25,3 +26,9 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::post('/projects', [ProjectController::class, 'store']);
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
+Route::put('/projects/{project}', [ProjectController::class, 'update']);
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);

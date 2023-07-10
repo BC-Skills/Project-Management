@@ -1,26 +1,20 @@
 <?php
+
+namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    /**
-     * Les attributs modifiables du modèle.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'is_active'
-    ];
+    // Define the table associated with the model
+    protected $table = 'projects';
 
-    /**
-     * Obtient le chef de projet du projet.
-     */
-    public function ProjectManagaer()
+    // Define the fillable attributes
+    protected $fillable = ['name', 'status', 'projectmanager_id'];
+
+    // Define the relationship with the project manager
+    public function projectManager()
     {
-        return $this->belongsTo(ProjectManagaer::class);
-    }
-    public function tickets()
-    {
-        return $this->hasMany(Tickets::class);
+        return $this->belongsTo(ProjectManager::class, 'projectmanager_id');
     }
 }
